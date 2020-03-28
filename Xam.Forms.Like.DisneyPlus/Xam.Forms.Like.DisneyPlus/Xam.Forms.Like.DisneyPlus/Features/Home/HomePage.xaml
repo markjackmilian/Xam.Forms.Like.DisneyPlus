@@ -6,13 +6,32 @@
              x:Class="Xam.Forms.Like.DisneyPlus.Features.Home.HomePage">
     <ContentPage.Content>
         
-        <magicGradients:GradientView VerticalOptions="FillAndExpand">
-            <magicGradients:GradientView.GradientSource>
-                <magicGradients:LinearGradient Angle="-45">
-                    <magicGradients:GradientStop Color="#0D0E13" Offset="0" />
-                    <magicGradients:GradientStop Color="#2D303F" Offset="1" />
-                </magicGradients:LinearGradient>
-            </magicGradients:GradientView.GradientSource>
-        </magicGradients:GradientView>
+        
+        <Grid>
+            <magicGradients:GradientView VerticalOptions="FillAndExpand">
+                <magicGradients:GradientView.GradientSource>
+                    <magicGradients:LinearGradient Angle="-45">
+                        <magicGradients:GradientStop Color="#0D0E13" Offset="0" />
+                        <magicGradients:GradientStop Color="#2D3041"  Offset="0.3" />
+                    </magicGradients:LinearGradient>
+                </magicGradients:GradientView.GradientSource>
+            </magicGradients:GradientView>
+            
+            <ScrollView>
+                <StackLayout>
+                    <Image Source="logo.png"  HeightRequest="70"/>
+                    <!-- <BoxView HeightRequest="200" BackgroundColor="Yellow"/> -->
+                    <!-- <BoxView HeightRequest="200" BackgroundColor="Red"/> -->
+                    <!-- <BoxView HeightRequest="200" BackgroundColor="Yellow"/> -->
+                    <!-- <BoxView HeightRequest="200" BackgroundColor="Red"/> -->
+                    <!-- <BoxView HeightRequest="200" BackgroundColor="Yellow"/> -->
+                    <!-- <BoxView HeightRequest="200" BackgroundColor="Red"/> -->
+                </StackLayout>
+            </ScrollView>
+            
+            
+            
+        </Grid>
+       
     </ContentPage.Content>
 </ContentPage>

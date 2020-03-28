@@ -90,6 +90,7 @@
     <ItemGroup>
         <Compile Include="Main.cs" />
         <Compile Include="AppDelegate.cs" />
+        <Compile Include="Renderers\TabbedControllerPageRender.cs" />
         <None Include="Entitlements.plist" />
         <None Include="Info.plist" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +109,7 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="MagicGradients" Version="1.0.0" />
+        <PackageReference Include="Resizetizer.NT" Version="0.1.0-preview8" />
         <PackageReference Include="Xam.Zero.DryIoc.Sem" Version="0.5.0" />
         <PackageReference Include="Xam.Zero.Sem" Version="0.5.0" />
         <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />

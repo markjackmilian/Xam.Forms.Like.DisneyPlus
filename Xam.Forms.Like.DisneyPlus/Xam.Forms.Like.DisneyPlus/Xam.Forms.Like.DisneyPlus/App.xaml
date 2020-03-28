@@ -4,9 +4,16 @@
              x:Class="Xam.Forms.Like.DisneyPlus.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Style TargetType="Shell">
-                <Setter Property="NavBarIsVisible" Value="False"/>
+            
+            
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.NavBarIsVisible" Value="false" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#1A191F" />
+                
             </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
