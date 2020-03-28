@@ -25,6 +25,7 @@
         <MtouchArch>x86_64</MtouchArch>
         <MtouchLink>None</MtouchLink>
         <MtouchDebug>true</MtouchDebug>
+        <MtouchExtraArgs>--enable-repl</MtouchExtraArgs>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>none</DebugType>
@@ -107,10 +108,11 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
+        <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Xam.Forms.Like.DisneyPlus\Xam.Forms.Like.DisneyPlus.csproj">
-            <Project>{254A59BB-2880-4307-9954-617339FDD719}</Project>
+            <Project>{12FE738C-2A5F-4629-9D0B-1773B9BF7007}</Project>
             <Name>Xam.Forms.Like.DisneyPlus</Name>
         </ProjectReference>
     </ItemGroup>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:disneyPlus="clr-namespace:Xam.Forms.Like.DisneyPlus;assembly=Xam.Forms.Like.DisneyPlus"
+       x:Class="Xam.Forms.Like.DisneyPlus.AppShell">
+    <TabBar>
+        <Tab Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate disneyPlus:MainPage}" />
+        </Tab>
+        
+        <Tab Title="Search">
+            <ShellContent ContentTemplate="{DataTemplate disneyPlus:MainPage}" />
+        </Tab>
+        
+        <Tab Title="Download">
+            <ShellContent ContentTemplate="{DataTemplate disneyPlus:MainPage}" />
+        </Tab>
+
+        <Tab Title="Profile">
+            <ShellContent ContentTemplate="{DataTemplate disneyPlus:MainPage}" />
+        </Tab>
+
+    </TabBar>
+</Shell>
