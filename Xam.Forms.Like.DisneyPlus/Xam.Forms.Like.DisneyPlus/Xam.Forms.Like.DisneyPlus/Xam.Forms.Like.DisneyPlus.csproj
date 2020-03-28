@@ -10,6 +10,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Xam.Zero.DryIoc.Sem" Version="0.5.0" />
+        <PackageReference Include="Xam.Zero.Sem" Version="0.5.0" />
         <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
         <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
     </ItemGroup>

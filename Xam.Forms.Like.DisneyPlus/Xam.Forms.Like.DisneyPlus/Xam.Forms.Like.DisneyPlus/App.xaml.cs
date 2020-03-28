@@ -1,4 +1,7 @@
 ﻿using System;
+using DryIoc;
+using Xam.Zero;
+using Xam.Zero.DryIoc;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,6 +13,8 @@ namespace Xam.Forms.Like.DisneyPlus
 {
     public partial class App : Application
     {
+        public static readonly Container Container = new Container();
+        
         public App()
         {
             InitializeComponent();
@@ -17,8 +22,17 @@ namespace Xam.Forms.Like.DisneyPlus
             #if DEBUG
             HotReloader.Current.Run(this);
             #endif
+            
+            this.ConfigureContainer();
+            ZeroApp.On(this)
+                .WithContainer(DryIocZeroContainer.Build(Container))
+                .RegisterShell(() => new AppShell())
+                .StartWith<AppShell>();
+        }
 
-            MainPage = new AppShell();
+        private void ConfigureContainer()
+        {
+            
         }
 
         protected override void OnStart()

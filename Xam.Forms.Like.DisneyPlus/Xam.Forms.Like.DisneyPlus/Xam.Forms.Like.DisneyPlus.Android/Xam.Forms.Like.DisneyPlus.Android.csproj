@@ -45,6 +45,8 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="Xam.Zero.DryIoc.Sem" Version="0.5.0" />
+        <PackageReference Include="Xam.Zero.Sem" Version="0.5.0" />
         <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
         <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
         <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
