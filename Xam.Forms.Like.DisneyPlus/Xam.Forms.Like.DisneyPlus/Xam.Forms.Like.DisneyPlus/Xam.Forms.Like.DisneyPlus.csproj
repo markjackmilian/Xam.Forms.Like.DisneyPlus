@@ -29,6 +29,10 @@
         <BaseSize>140,70</BaseSize>
       </SharedImage>
       <SharedImage Include="Images\HeaderCarousel\mandalorian.jpg" BaseSize="220" />
+      <SharedImage Include="Images\disney.svg" BaseSize="90" />
+      <SharedImage Include="Images\pixar.svg" BaseSize="90" />
+      <SharedImage Include="Images\marvel.svg" BaseSize="90" />
+      <SharedImage Include="Images\starwars.svg" BaseSize="90" />
     </ItemGroup>
 
     <ItemGroup>

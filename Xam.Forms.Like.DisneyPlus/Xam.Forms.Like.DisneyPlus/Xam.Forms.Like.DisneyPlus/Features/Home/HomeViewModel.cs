@@ -8,6 +8,7 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
     public class HomeViewModel : ZeroBaseModel
     {
         public List<HeaderItem> HeaderItems { get; set; }
+        public List<string> GroupItems { get; set; }
 
         public HeaderItem CurrentHeaderItem { get; set; }
 
@@ -35,7 +36,15 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
                 {
                     Source = "mandalorian.jpg"
                 },
-                
+            };
+            
+            this.GroupItems = new List<string>
+            {
+                "disney.png",
+                "pixar.png",
+                "marvel.png",
+                "starwars.png",
+                "pixar.png",
             };
         }
     }
