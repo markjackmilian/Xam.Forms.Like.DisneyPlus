@@ -17,6 +17,10 @@ namespace Xam.Forms.Like.DisneyPlus
         
         public App()
         {
+            Device.SetFlags(new[] { 
+                "CarouselView_Experimental", 
+            } );
+            
             InitializeComponent();
             
             #if DEBUG

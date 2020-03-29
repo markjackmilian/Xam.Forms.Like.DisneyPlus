@@ -3,35 +3,64 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:magicGradients="clr-namespace:MagicGradients;assembly=MagicGradients"
-             x:Class="Xam.Forms.Like.DisneyPlus.Features.Home.HomePage">
+             xmlns:home="clr-namespace:Xam.Forms.Like.DisneyPlus.Features.Home;assembly=Xam.Forms.Like.DisneyPlus"
+             xmlns:markupExtensions="clr-namespace:Xam.Zero.MarkupExtensions;assembly=Xam.Zero"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="Xam.Forms.Like.DisneyPlus.Features.Home.HomePage"
+             x:Name="Home"
+             x:DataType="home:HomeViewModel"
+             BindingContext="{markupExtensions:ShellPagedViewModelMarkup ViewModel={x:Type home:HomeViewModel}, Page={x:Reference Home}}">
     <ContentPage.Content>
-        
-        
+
+
         <Grid>
             <magicGradients:GradientView VerticalOptions="FillAndExpand">
                 <magicGradients:GradientView.GradientSource>
                     <magicGradients:LinearGradient Angle="-45">
                         <magicGradients:GradientStop Color="#0D0E13" Offset="0" />
-                        <magicGradients:GradientStop Color="#2D3041"  Offset="0.3" />
+                        <magicGradients:GradientStop Color="#2D3041" Offset="0.3" />
                     </magicGradients:LinearGradient>
                 </magicGradients:GradientView.GradientSource>
             </magicGradients:GradientView>
-            
+
             <ScrollView>
                 <StackLayout>
-                    <Image Source="logo.png"  HeightRequest="70"/>
-                    <!-- <BoxView HeightRequest="200" BackgroundColor="Yellow"/> -->
-                    <!-- <BoxView HeightRequest="200" BackgroundColor="Red"/> -->
-                    <!-- <BoxView HeightRequest="200" BackgroundColor="Yellow"/> -->
-                    <!-- <BoxView HeightRequest="200" BackgroundColor="Red"/> -->
-                    <!-- <BoxView HeightRequest="200" BackgroundColor="Yellow"/> -->
-                    <!-- <BoxView HeightRequest="200" BackgroundColor="Red"/> -->
+                    <Grid>
+                        <Image Source="logo.png"
+                               HeightRequest="70"
+                               HorizontalOptions="Center" />
+                        <Image Source="cast.png"
+                               HeightRequest="24"
+                               HorizontalOptions="End"
+                               TranslationY="12"
+                               Margin="0,0,32,0" />
+
+                    </Grid>
+
+                    <!-- <Image Source="mandalorian.jpg" x:Name="test"/> -->
+                    <ContentView HeightRequest="220">
+                        <CarouselView
+                            CurrentItem="{Binding CurrentHeaderItem}"
+                            ItemsSource="{Binding HeaderItems}"
+                            HorizontalScrollBarVisibility="Never"
+                            >
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate x:DataType="home:HeaderItem">
+                                        <ContentView Margin="0,-16">
+                                            <Image Source="{Binding Source}"
+                                                   Scale="{Binding Scale}" />
+                                        </ContentView>
+
+
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                    </ContentView>
                 </StackLayout>
             </ScrollView>
-            
-            
-            
+
+
         </Grid>
-       
+
     </ContentPage.Content>
 </ContentPage>
