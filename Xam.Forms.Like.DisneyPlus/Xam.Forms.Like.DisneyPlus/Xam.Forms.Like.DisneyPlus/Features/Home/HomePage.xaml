@@ -7,7 +7,7 @@
              xmlns:markupExtensions="clr-namespace:Xam.Zero.MarkupExtensions;assembly=Xam.Zero"
              xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
-
+             xmlns:views="clr-namespace:Xam.Forms.Like.DisneyPlus.Views;assembly=Xam.Forms.Like.DisneyPlus"
              x:Class="Xam.Forms.Like.DisneyPlus.Features.Home.HomePage"
              x:Name="Home"
              x:DataType="home:HomeViewModel"
@@ -59,16 +59,16 @@
                     <!-- HEADER -->
                     
                     <StackLayout 
-                        HeightRequest="60"
+                        HeightRequest="65"
                         Margin="8,16"
                         BindableLayout.ItemsSource="{Binding GroupItems}"
                         Orientation="Horizontal">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="system:String">
                                 <pancakeView:PancakeView 
-                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalOptions="CenterAndExpand"
                                     HeightRequest="60"
-                                    WidthRequest="50"
+                                    WidthRequest="70"
                                     CornerRadius="12"
                                     BorderColor="#3E659C"
                                     BorderThickness="1">
@@ -96,6 +96,8 @@
                         BackgroundColor="Red"
                         HorizontalOptions="Start"
                         />
+                    
+                   <views:ProfileTabItem HorizontalOptions="Start" />
 
                     
                     

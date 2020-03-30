@@ -33,6 +33,7 @@
       <SharedImage Include="Images\pixar.svg" BaseSize="90" />
       <SharedImage Include="Images\marvel.svg" BaseSize="90" />
       <SharedImage Include="Images\starwars.svg" BaseSize="90" />
+      <SharedImage Include="Images\face.png" BaseSize="50" />
     </ItemGroup>
 
     <ItemGroup>
