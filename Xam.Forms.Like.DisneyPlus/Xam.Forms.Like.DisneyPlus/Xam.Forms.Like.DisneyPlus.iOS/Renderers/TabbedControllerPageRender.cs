@@ -57,13 +57,7 @@ namespace Xam.Forms.Like.DisneyPlus.iOS.Renderers
             UITabBar myTabBar = controller.TabBar;
             myTabBar.Translucent = true;
             myTabBar.Opaque = true;
-            myTabBar.BarTintColor = UIColor.Black; // todo
-
-            myTabBar.Subviews.ForEach(f =>
-            {
-                var ff = f.Frame;
-                var fff = f.GetFrame();
-            });
+            myTabBar.BarTintColor = ((Color)App.Current.Resources["TabBarColor"]).ToUIColor();
 
 
             if (myTabBar.Items != null)

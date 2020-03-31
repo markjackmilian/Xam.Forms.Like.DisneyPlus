@@ -34,6 +34,10 @@
       <SharedImage Include="Images\marvel.svg" BaseSize="90" />
       <SharedImage Include="Images\starwars.svg" BaseSize="90" />
       <SharedImage Include="Images\face.png" BaseSize="50" />
+      <SharedImage Include="Images\Films\simpson.jpg" BaseSize="200" />
+      <SharedImage Include="Images\Films\gravity.jpg" BaseSize="200" />
+      <SharedImage Include="Images\Films\gravity2.jpg" BaseSize="200" />
+      <SharedImage Include="Images\Films\avanger.jpg" BaseSize="200" />
     </ItemGroup>
 
     <ItemGroup>

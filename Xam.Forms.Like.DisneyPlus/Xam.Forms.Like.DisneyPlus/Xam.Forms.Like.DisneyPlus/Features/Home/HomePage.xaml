@@ -8,13 +8,26 @@
              xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:views="clr-namespace:Xam.Forms.Like.DisneyPlus.Views;assembly=Xam.Forms.Like.DisneyPlus"
+             xmlns:converters="clr-namespace:Xam.Forms.Like.DisneyPlus.Converters;assembly=Xam.Forms.Like.DisneyPlus"
              x:Class="Xam.Forms.Like.DisneyPlus.Features.Home.HomePage"
              x:Name="Home"
              x:DataType="home:HomeViewModel"
              BindingContext="{markupExtensions:ShellPagedViewModelMarkup ViewModel={x:Type home:HomeViewModel}, Page={x:Reference Home}}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:CollectionViewMarginConverter x:Key="CollectionViewMarginConverter"/>   
+            
+            <x:Array Type="{x:Type system:String}" x:Key="Films">
+                <x:String>simpson.jpg</x:String>
+                <x:String>gravity.jpg</x:String>
+                <x:String>gravity2.jpg</x:String>
+                <x:String>avanger.jpg</x:String>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-
-
         <Grid>
             <magicGradients:GradientView VerticalOptions="FillAndExpand">
                 <magicGradients:GradientView.GradientSource>
@@ -48,24 +61,34 @@
                             HorizontalScrollBarVisibility="Never">
                             <CarouselView.ItemTemplate>
                                 <DataTemplate x:DataType="home:HeaderItem">
-                                        <ContentView Margin="0,-16">
-                                            <Image Source="{Binding Source}"
-                                                   Scale="{Binding Scale}" />
-                                        </ContentView>
+                                    <ContentView Margin="0,-16">
+                                        <Image Source="{Binding Source}"
+                                               Scale="{Binding Scale}" />
+                                    </ContentView>
                                 </DataTemplate>
                             </CarouselView.ItemTemplate>
                         </CarouselView>
                     </ContentView>
                     <!-- HEADER -->
-                    
-                    <StackLayout 
+
+                    <StackLayout
                         HeightRequest="65"
                         Margin="8,16"
-                        BindableLayout.ItemsSource="{Binding GroupItems}"
+                        
                         Orientation="Horizontal">
+                        <BindableLayout.ItemsSource>
+                            <x:Array Type="{x:Type system:String}" >
+                                <x:String>disney.png</x:String>
+                                <x:String>pixar.png</x:String>
+                                <x:String>marvel.png</x:String>
+                                <x:String>starwars.png</x:String>
+                                <x:String>starwars.png</x:String>
+                            </x:Array>
+                        </BindableLayout.ItemsSource>
+                        
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="system:String">
-                                <pancakeView:PancakeView 
+                                <pancakeView:PancakeView
                                     HorizontalOptions="CenterAndExpand"
                                     HeightRequest="60"
                                     WidthRequest="70"
@@ -81,26 +104,70 @@
                                                 </magicGradients:LinearGradient>
                                             </magicGradients:GradientView.GradientSource>
                                         </magicGradients:GradientView>
-                            
-                                        <Image Source="{Binding .}" Margin="4"/>
+
+                                        <Image Source="{Binding .}" Margin="4" />
                                     </Grid>
                                 </pancakeView:PancakeView>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
-                        
-                    </StackLayout>
-                    
-                    <BoxView
-                        HeightRequest="60"
-                        WidthRequest="65"
-                        BackgroundColor="Red"
-                        HorizontalOptions="Start"
-                        />
-                    
-                   <views:ProfileTabItem HorizontalOptions="Start" />
 
+                    </StackLayout>
+
+                    <!-- ROW1 -->
+                    <Label Text="You like"
+                           Margin="16,0,0,0"
+                           FontAttributes="Bold"
+                           FontSize="Large"
+                           TextColor="LightGray" />
+                    <CollectionView HeightRequest="180"
+                                    HorizontalScrollBarVisibility="Never"
+                                    ItemsSource="{StaticResource Films}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="system:String">
+                                <ContentView>
+                                    <pancakeView:PancakeView
+                                        Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
+                                        CornerRadius="7">
+                                        <Image Source="{Binding .}" />
+                                    </pancakeView:PancakeView>
+                                </ContentView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!-- ROW1 -->
                     
-                    
+                    <!-- ROW2 -->
+                    <Label Text="You like"
+                           Margin="16,0,0,0"
+                           FontAttributes="Bold"
+                           FontSize="Large"
+                           TextColor="LightGray" />
+                    <CollectionView HeightRequest="180"
+                                    HorizontalScrollBarVisibility="Never"
+                                    ItemsSource="{StaticResource Films}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="system:String">
+                                <ContentView>
+                                    <pancakeView:PancakeView
+                                        Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
+                                        CornerRadius="7">
+                                        <Image Source="{Binding .}" />
+                                    </pancakeView:PancakeView>
+                                </ContentView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!-- ROW2 -->
+
+
                 </StackLayout>
             </ScrollView>
 
