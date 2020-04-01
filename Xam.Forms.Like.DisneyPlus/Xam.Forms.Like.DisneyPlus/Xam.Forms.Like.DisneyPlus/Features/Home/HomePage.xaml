@@ -114,10 +114,10 @@
                     </StackLayout>
 
                     <!-- ROW1 -->
-                    <Label Text="You like"
+                    <Label Text="Originals"
                            Margin="16,0,0,0"
                            FontAttributes="Bold"
-                           FontSize="Large"
+                           FontSize="Medium"
                            TextColor="LightGray" />
                     <CollectionView HeightRequest="180"
                                     HorizontalScrollBarVisibility="Never"
@@ -141,10 +141,10 @@
                     <!-- ROW1 -->
                     
                     <!-- ROW2 -->
-                    <Label Text="You like"
-                           Margin="16,0,0,0"
+                    <Label Text="Because You Watched The Simpson"
+                           Margin="16,16,0,0"
                            FontAttributes="Bold"
-                           FontSize="Large"
+                           FontSize="Medium"
                            TextColor="LightGray" />
                     <CollectionView HeightRequest="180"
                                     HorizontalScrollBarVisibility="Never"

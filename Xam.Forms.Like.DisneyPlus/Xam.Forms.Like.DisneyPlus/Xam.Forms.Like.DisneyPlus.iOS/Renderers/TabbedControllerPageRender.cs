@@ -8,7 +8,6 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(Shell), typeof(TabbedControllerPageRender))]
-
 namespace Xam.Forms.Like.DisneyPlus.iOS.Renderers
 {
     public class TabbedControllerPageRender : ShellRenderer
@@ -57,21 +56,26 @@ namespace Xam.Forms.Like.DisneyPlus.iOS.Renderers
             UITabBar myTabBar = controller.TabBar;
             myTabBar.Translucent = true;
             myTabBar.Opaque = true;
-            myTabBar.BarTintColor = ((Color)App.Current.Resources["TabBarColor"]).ToUIColor();
+            myTabBar.BarTintColor = ((Color)Xamarin.Forms.Application.Current.Resources["TabBarColor"]).ToUIColor();
+            myTabBar.SelectedImageTintColor = UIColor.White;
 
 
             if (myTabBar.Items != null)
             {
-                var itemOne = myTabBar.Items[3];
+                ShowTabItem(myTabBar.Items[0],"home.png");
+                ShowTabItem(myTabBar.Items[1],"search.png");
+                ShowTabItem(myTabBar.Items[2],"download.png");
 
-                itemOne.Image = UIImage.FromBundle("face.png")
+
+                var itemThree = myTabBar.Items[3];
+
+                itemThree.Image = UIImage.FromBundle("avatar.png")
                     .ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-                itemOne.SelectedImage = UIImage.FromBundle("face.png")
+                itemThree.SelectedImage = UIImage.FromBundle("avatar.png")
                     .ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
 
-                itemOne.Title = string.Empty;
-
-                itemOne.ImageInsets = new UIEdgeInsets(6, 0, -6, 0);
+                itemThree.Title = string.Empty;
+                itemThree.ImageInsets = new UIEdgeInsets(6, 0, -6, 0);
 
 
 
@@ -85,6 +89,19 @@ namespace Xam.Forms.Like.DisneyPlus.iOS.Renderers
 
               
             }
+        }
+
+        /// <summary>
+        /// Set appearance of this tabitem
+        /// </summary>
+        /// <param name="itemOne"></param>
+        /// <param name="homePng"></param>
+        private static void ShowTabItem(UITabBarItem itemOne, string homePng)
+        {
+            itemOne.Image = UIImage.FromBundle(homePng);
+            itemOne.SelectedImage = UIImage.FromBundle(homePng);
+            itemOne.Title = string.Empty;
+            itemOne.ImageInsets = new UIEdgeInsets(6, 0, -6, 0);
         }
 
         public static UIView ConvertFormsToNative(Xamarin.Forms.View view, CGRect size)

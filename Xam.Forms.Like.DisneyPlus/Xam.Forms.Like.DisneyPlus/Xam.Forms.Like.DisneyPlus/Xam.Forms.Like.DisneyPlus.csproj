@@ -33,11 +33,14 @@
       <SharedImage Include="Images\pixar.svg" BaseSize="90" />
       <SharedImage Include="Images\marvel.svg" BaseSize="90" />
       <SharedImage Include="Images\starwars.svg" BaseSize="90" />
-      <SharedImage Include="Images\face.png" BaseSize="50" />
       <SharedImage Include="Images\Films\simpson.jpg" BaseSize="200" />
       <SharedImage Include="Images\Films\gravity.jpg" BaseSize="200" />
       <SharedImage Include="Images\Films\gravity2.jpg" BaseSize="200" />
       <SharedImage Include="Images\Films\avanger.jpg" BaseSize="200" />
+      <SharedImage Include="Images\TabIcons\download.svg" BaseSize="30" />
+      <SharedImage Include="Images\TabIcons\home.png" BaseSize="30" />
+      <SharedImage Include="Images\TabIcons\search.png" BaseSize="30" />
+      <SharedImage Include="Images\TabIcons\avatar.png" BaseSize="40"/>
     </ItemGroup>
 
     <ItemGroup>

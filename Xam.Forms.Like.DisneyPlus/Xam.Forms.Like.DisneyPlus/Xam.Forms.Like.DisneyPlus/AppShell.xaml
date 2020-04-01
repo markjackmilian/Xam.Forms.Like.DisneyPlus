@@ -8,15 +8,15 @@
 
        x:Class="Xam.Forms.Like.DisneyPlus.AppShell">
     <TabBar>
-        <Tab Title="Home">
+        <Tab Title="Home" Icon="home.png">
             <ShellContent ContentTemplate="{DataTemplate home:HomePage}" />
         </Tab>
         
-        <Tab Title="Search">
+        <Tab Title="Search" Icon="search.png">
             <ShellContent ContentTemplate="{DataTemplate home:HomePage}" />
         </Tab>
         
-        <Tab Title="Download">
+        <Tab Title="Download" Icon="download.png">
             <ShellContent ContentTemplate="{DataTemplate home:HomePage}" />
         </Tab>
 
