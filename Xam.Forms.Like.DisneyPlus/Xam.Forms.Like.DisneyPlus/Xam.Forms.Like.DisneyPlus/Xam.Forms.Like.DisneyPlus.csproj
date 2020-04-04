@@ -51,5 +51,6 @@
     <ItemGroup>
       <None Remove="Assets\Avenir-Black.ttf" />
       <EmbeddedResource Include="Assets\Avenir-Black.ttf" />
+      <None Remove="Assets\Samantha.ttf" />
     </ItemGroup>
 </Project>
