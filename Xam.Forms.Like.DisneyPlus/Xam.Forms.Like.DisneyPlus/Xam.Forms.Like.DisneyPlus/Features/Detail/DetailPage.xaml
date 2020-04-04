@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:markupExtensions="clr-namespace:Xam.Zero.MarkupExtensions;assembly=Xam.Zero"
+             xmlns:detail="clr-namespace:Xam.Forms.Like.DisneyPlus.Features.Detail;assembly=Xam.Forms.Like.DisneyPlus"
+             xmlns:magicGradients="clr-namespace:MagicGradients;assembly=MagicGradients"
+             x:DataType="detail:DetailViewModel"
+             BackgroundColor="Red"
+             BindingContext="{markupExtensions:ViewModelMarkup ViewModel={x:Type detail:DetailViewModel}}"
+             x:Class="Xam.Forms.Like.DisneyPlus.Features.Detail.DetailPage">
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0"
+                       Source="ocean2"
+                       Aspect="AspectFill"
+                       x:Name="BackImage" />
+                <magicGradients:GradientView Grid.Row="0"
+                                             TranslationY="1"
+                                             VerticalOptions="End"
+                                             HeightRequest="150">
+                    <magicGradients:GradientView.GradientSource>
+                        <magicGradients:LinearGradient Angle="-180">
+                            <magicGradients:GradientStop Color="Transparent" Offset="1" />
+                            <magicGradients:GradientStop Color="#1B1D29" Offset="0.1" />
+                        </magicGradients:LinearGradient>
+                    </magicGradients:GradientView.GradientSource>
+                </magicGradients:GradientView>
+                <Image Grid.Row="0" Source="ngLogo"
+                       x:Name="Logo"
+                       WidthRequest="230"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       Margin="0,0,0,160" />
+                <Button Grid.Row="0"
+                        Text="Back"
+                        TextColor="White"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        Margin="16"
+                        Command="{Binding BackCommand}" />
+            </Grid>
+
+            <ScrollView Scrolled="ScrollView_OnScrolled" 
+                        x:Name="Scroller" Margin="0,-44,0,0" VerticalScrollBarVisibility="Never">
+                <StackLayout Spacing="0"  >
+                    <!-- <ContentView -->
+                    <!--     x:Name="Spacer" -->
+                    <!--     x:DataType="Image" -->
+                    <!--     BackgroundColor="#1B1D29" -->
+                    <!--     Opacity="0" -->
+                    <!--     HeightRequest="{Binding Height}" -->
+                    <!--     BindingContext="{x:Reference Name=BackImage}" /> -->
+                    <ContentView
+                        x:Name="Spacer"
+                        x:DataType="Image"
+                        BackgroundColor="#1B1D29"
+                        Opacity="0"
+                        HeightRequest="1500"
+                        />
+
+
+                    <!-- <ContentView BackgroundColor="#1B1D29" -->
+                    <!--              HeightRequest="1500" /> -->
+                </StackLayout>
+
+            </ScrollView>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

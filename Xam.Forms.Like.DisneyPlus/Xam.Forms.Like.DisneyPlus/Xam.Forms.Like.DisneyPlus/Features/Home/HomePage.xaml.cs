@@ -17,17 +17,19 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
 
         }
 
-        private void ItemsView_OnScrolled(object sender, ItemsViewScrolledEventArgs e)
-        {
-            Console.WriteLine($"{e.FirstVisibleItemIndex} - {e.LastVisibleItemIndex}");
-            Console.WriteLine(e.FirstVisibleItemIndex);
-        }
+        // private void ItemsView_OnScrolled(object sender, ItemsViewScrolledEventArgs e)
+        // {
+        //     Console.WriteLine($"{e.FirstVisibleItemIndex} - {e.LastVisibleItemIndex}");
+        //     Console.WriteLine(e.FirstVisibleItemIndex);
+        // }
+        //
+        //
+        // private void CarouselView_OnPositionChanged(object sender, PositionChangedEventArgs e)
+        // {
+        //     var carousel = (CarouselView) sender;
+        //     ((Image) carousel.LogicalChildren[e.CurrentPosition]).HeightRequest = 50;
+        // }
 
-
-        private void CarouselView_OnPositionChanged(object sender, PositionChangedEventArgs e)
-        {
-            var carousel = (CarouselView) sender;
-            ((Image) carousel.LogicalChildren[e.CurrentPosition]).HeightRequest = 50;
-        }
+        
     }
 }

@@ -95,6 +95,9 @@
                                     CornerRadius="12"
                                     BorderColor="#3E659C"
                                     BorderThickness="1">
+                                    <pancakeView:PancakeView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToDetailCommand, Source={x:Reference Home} }" CommandParameter="{Binding .}"/>
+                                    </pancakeView:PancakeView.GestureRecognizers>
                                     <Grid>
                                         <magicGradients:GradientView VerticalOptions="FillAndExpand">
                                             <magicGradients:GradientView.GradientSource>
@@ -104,7 +107,6 @@
                                                 </magicGradients:LinearGradient>
                                             </magicGradients:GradientView.GradientSource>
                                         </magicGradients:GradientView>
-
                                         <Image Source="{Binding .}" Margin="4" />
                                     </Grid>
                                 </pancakeView:PancakeView>

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Windows.Input;
 using PropertyChanged;
+using Xam.Forms.Like.DisneyPlus.Features.Detail;
 using Xam.Zero.ViewModels;
 using Xamarin.Forms;
 
@@ -7,14 +9,22 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
 {
     public class HomeViewModel : ZeroBaseModel
     {
+        public ICommand GoToDetailCommand { get; set; }
         public List<HeaderItem> HeaderItems { get; set; }
         public HeaderItem CurrentHeaderItem { get; set; }
+
+
+        public HomeViewModel()
+        {
+            this.GoToDetailCommand = new Command(async ()=> await base.Push<DetailPage>());
+        }
 
         public void OnCurrentHeaderItemChanged()
         {
             this.HeaderItems.ForEach(f => f.Scale = 0.8);
             this.CurrentHeaderItem.Scale = 1;
         }
+        
       
 
         protected override void PrepareModel(object data)
