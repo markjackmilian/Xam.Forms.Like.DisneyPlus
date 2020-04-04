@@ -15,43 +15,41 @@
         <PackageReference Include="Resizetizer.NT" Version="0.1.0-preview8" />
         <PackageReference Include="Xam.Zero.DryIoc.Sem" Version="0.5.0" />
         <PackageReference Include="Xam.Zero.Sem" Version="0.5.0" />
-        <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
+        <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
         <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />
         <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <SharedImage Include="Images\cast.svg">
-        <BaseSize>24,24</BaseSize>
-      </SharedImage>
-      <SharedImage Include="Images\Group\avengers.png">
-        <BaseSize>400</BaseSize>
-      </SharedImage>
-         
-      <SharedImage Include="Images\logo.svg">
-        <BaseSize>140,70</BaseSize>
-      </SharedImage>
-      <SharedImage Include="Images\HeaderCarousel\mandalorian.jpg" BaseSize="220" />
-      <SharedImage Include="Images\disney.svg" BaseSize="90" />
-      <SharedImage Include="Images\pixar.svg" BaseSize="90" />
-      <SharedImage Include="Images\marvel.svg" BaseSize="90" />
-      <SharedImage Include="Images\gradientBack.png" BaseSize="100" />
-      <SharedImage Include="Images\starwars.svg" BaseSize="90" />
-      <SharedImage Include="Images\Films\simpson.jpg" BaseSize="200" />
-      <SharedImage Include="Images\Films\gravity.jpg" BaseSize="200" />
-      <SharedImage Include="Images\Films\gravity2.jpg" BaseSize="200" />
-      <SharedImage Include="Images\Films\avanger.jpg" BaseSize="200" />
-      <SharedImage Include="Images\TabIcons\download.svg" BaseSize="30" />
-      <SharedImage Include="Images\TabIcons\home.png" BaseSize="30" />
-      <SharedImage Include="Images\TabIcons\search.png" BaseSize="30" />
-      <SharedImage Include="Images\TabIcons\avatar.png" BaseSize="40" />
-      <SharedImage Include="Images\Group\deathStar.jpg" BaseSize="400" />
-      <SharedImage Include="Images\Group\ocean.jpg" BaseSize="400" />
-      <SharedImage Include="Images\Group\ocean2.png" BaseSize="400" />
-      <SharedImage Include="Images\Group\ngLogo.png" BaseSize="230"/>
+      <Folder Include="Models" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models" />
+      <SharedImage Include="Assets\Images\cast.svg" BaseSize="24" />
+      <SharedImage Include="Assets\Images\disney.svg" BaseSize="90" />
+      <SharedImage Include="Assets\Images\Films\avanger.jpg" BaseSize="400" />
+      <SharedImage Include="Assets\Images\Films\gravity.jpg" BaseSize="200" />
+      <SharedImage Include="Assets\Images\Films\gravity2.jpg" BaseSize="200" />
+      <SharedImage Include="Assets\Images\Films\simpson.jpg" BaseSize="200" />
+      <SharedImage Include="Assets\Images\gradientBack.png" BaseSize="100" />
+      <SharedImage Include="Assets\Images\Group\avengers.png" BaseSize="200" />
+      <SharedImage Include="Assets\Images\Group\deathStar.jpg" BaseSize="400" />
+      <SharedImage Include="Assets\Images\Group\ngLogo.png" BaseSize="320" />
+      <SharedImage Include="Assets\Images\Group\ocean.jpg" BaseSize="400" />
+      <SharedImage Include="Assets\Images\Group\ocean2.png" BaseSize="400" />
+      <SharedImage Include="Assets\Images\HeaderCarousel\mandalorian.jpg" BaseSize="220" />
+      <SharedImage Include="Assets\Images\logo.svg" BaseSize="140,70" />
+      <SharedImage Include="Assets\Images\marvel.svg" BaseSize="90" />
+      <SharedImage Include="Assets\Images\pixar.svg" BaseSize="90" />
+      <SharedImage Include="Assets\Images\starwars.svg" BaseSize="90" />
+      <SharedImage Include="Assets\Images\TabIcons\avatar.png" BaseSize="40" />
+      <SharedImage Include="Assets\Images\TabIcons\download.svg" BaseSize="30" />
+      <SharedImage Include="Assets\Images\TabIcons\home.png" BaseSize="30" />
+      <SharedImage Include="Assets\Images\TabIcons\search.png" BaseSize="30" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\Avenir-Black.ttf" />
+      <EmbeddedResource Include="Assets\Avenir-Black.ttf" />
     </ItemGroup>
 </Project>

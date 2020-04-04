@@ -118,7 +118,7 @@
         <PackageReference Include="Resizetizer.NT" Version="0.1.0-preview8" />
         <PackageReference Include="Xam.Zero.DryIoc.Sem" Version="0.5.0" />
         <PackageReference Include="Xam.Zero.Sem" Version="0.5.0" />
-        <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
+        <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
         <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
     </ItemGroup>
     <ItemGroup>
@@ -126,9 +126,6 @@
             <Project>{12FE738C-2A5F-4629-9D0B-1773B9BF7007}</Project>
             <Name>Xam.Forms.Like.DisneyPlus</Name>
         </ProjectReference>
-    </ItemGroup>
-    <ItemGroup>
-      <BundleResource Include="Resources\Fonts\Avenir-Black.ttf" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

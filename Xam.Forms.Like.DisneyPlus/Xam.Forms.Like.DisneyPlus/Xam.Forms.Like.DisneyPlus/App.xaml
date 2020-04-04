@@ -15,16 +15,9 @@
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             
-            <!-- CUSTOM FONTS -->
-            <OnPlatform x:TypeArguments="x:String" x:Key="Avenir">
-                <On Platform="Android" Value="Avenir-Black.ttf#Avenir Black" />
-                <On Platform="iOS" Value="Avenir" />
-            </OnPlatform>
-            <!-- CUSTOM FONTS -->
-
             <!-- IMPLICIT -->
             <Style TargetType="Label" >
-                <Setter Property="FontFamily" Value="{StaticResource Avenir}"/>
+                <Setter Property="FontFamily" Value="disneyplus"/>
                 <Setter Property="TextColor" Value="White"/>
             </Style>
             <!-- IMPLICIT -->

@@ -5,6 +5,8 @@ using Xam.Zero.DryIoc;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+[assembly: ExportFont("Avenir-Black.ttf", Alias = "disneyplus")]
+
 #if DEBUG
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 #endif
