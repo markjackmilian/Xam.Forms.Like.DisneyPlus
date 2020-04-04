@@ -53,10 +53,11 @@ namespace Xam.Forms.Like.DisneyPlus.iOS.Renderers
 
         public void SetAppearance(UITabBarController controller, ShellAppearance appearance)
         {
-            UITabBar myTabBar = controller.TabBar;
-            myTabBar.Translucent = true;
-            myTabBar.Opaque = true;
-            myTabBar.BarTintColor = ((Color)Xamarin.Forms.Application.Current.Resources["TabBarColor"]).ToUIColor();
+            var myTabBar = controller.TabBar;
+            myTabBar.BarStyle = UIBarStyle.Black;
+            // myTabBar.Translucent = true;
+            // myTabBar.Opaque = true;
+            // myTabBar.BarTintColor = ((Color)Xamarin.Forms.Application.Current.Resources["DarkBackColor"]).ToUIColor();
             myTabBar.SelectedImageTintColor = UIColor.White;
 
 

@@ -5,13 +5,13 @@
     <Application.Resources>
         <ResourceDictionary>
             
-            <Color x:Key="TabBarColor">#1A191F</Color>
+            <Color x:Key="DarkBackColor">#1B1D29</Color>
 
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.NavBarIsVisible" Value="false" />
+                <Setter Property="Shell.NavBarIsVisible" Value="False" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="White" />
                 <Setter Property="Shell.TabBarTitleColor" Value="White" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBarColor}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource DarkBackColor}" />
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             

@@ -5,10 +5,28 @@
              xmlns:markupExtensions="clr-namespace:Xam.Zero.MarkupExtensions;assembly=Xam.Zero"
              xmlns:detail="clr-namespace:Xam.Forms.Like.DisneyPlus.Features.Detail;assembly=Xam.Forms.Like.DisneyPlus"
              xmlns:magicGradients="clr-namespace:MagicGradients;assembly=MagicGradients"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:converters="clr-namespace:Xam.Forms.Like.DisneyPlus.Converters;assembly=Xam.Forms.Like.DisneyPlus"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:DataType="detail:DetailViewModel"
-             BackgroundColor="Red"
+             BackgroundColor="#1B1D29"
              BindingContext="{markupExtensions:ViewModelMarkup ViewModel={x:Type detail:DetailViewModel}}"
              x:Class="Xam.Forms.Like.DisneyPlus.Features.Detail.DetailPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:CollectionViewMarginConverter x:Key="CollectionViewMarginConverter" />
+            <converters:InvertOpacityConverter x:Key="InvertOpacityConverter" />
+            
+            <x:Array Type="{x:Type system:String}" x:Key="Films">
+                <x:String>simpson.jpg</x:String>
+                <x:String>gravity.jpg</x:String>
+                <x:String>gravity2.jpg</x:String>
+                <x:String>avanger.jpg</x:String>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
 
         <Grid>
@@ -37,40 +55,197 @@
                        WidthRequest="230"
                        HorizontalOptions="Center"
                        VerticalOptions="End"
-                       Margin="0,0,0,160" />
-                <Button Grid.Row="0"
-                        Text="Back"
-                        TextColor="White"
-                        VerticalOptions="Start"
-                        HorizontalOptions="Start"
-                        Margin="16"
-                        Command="{Binding BackCommand}" />
+                       Margin="0,0,0,170" />
+               
             </Grid>
 
-            <ScrollView Scrolled="ScrollView_OnScrolled" 
-                        x:Name="Scroller" Margin="0,-44,0,0" VerticalScrollBarVisibility="Never">
-                <StackLayout Spacing="0"  >
-                    <!-- <ContentView -->
-                    <!--     x:Name="Spacer" -->
-                    <!--     x:DataType="Image" -->
-                    <!--     BackgroundColor="#1B1D29" -->
-                    <!--     Opacity="0" -->
-                    <!--     HeightRequest="{Binding Height}" -->
-                    <!--     BindingContext="{x:Reference Name=BackImage}" /> -->
+            <ScrollView Scrolled="ScrollView_OnScrolled"
+                        x:Name="Scroller"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Spacing="0">
                     <ContentView
                         x:Name="Spacer"
                         x:DataType="Image"
-                        BackgroundColor="#1B1D29"
+                        BackgroundColor="{StaticResource DarkBackColor}"
                         Opacity="0"
-                        HeightRequest="1500"
-                        />
+                        HeightRequest="{Binding Height}"
+                        BindingContext="{x:Reference BackImage}" />
 
 
-                    <!-- <ContentView BackgroundColor="#1B1D29" -->
-                    <!--              HeightRequest="1500" /> -->
+                    <StackLayout TranslationY="-165">
+                        <!-- ROW1 -->
+                        <Label Text="Originals"
+                               Margin="16,0,0,0"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               TextColor="LightGray" />
+                        <CollectionView HeightRequest="180"
+                                        HorizontalScrollBarVisibility="Never"
+                                        ItemsSource="{StaticResource Films}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <ContentView>
+                                        <pancakeView:PancakeView
+                                            Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
+                                            CornerRadius="7">
+                                            <Image Source="{Binding .}" />
+                                        </pancakeView:PancakeView>
+                                    </ContentView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- ROW1 -->
+
+                        <!-- ROW1 -->
+                        <Label Text="Originals"
+                               Margin="16,0,0,0"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               TextColor="LightGray" />
+                        <CollectionView HeightRequest="180"
+                                        HorizontalScrollBarVisibility="Never"
+                                        ItemsSource="{StaticResource Films}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <ContentView>
+                                        <pancakeView:PancakeView
+                                            Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
+                                            CornerRadius="7">
+                                            <Image Source="{Binding .}" />
+                                        </pancakeView:PancakeView>
+                                    </ContentView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- ROW1 -->
+
+                        <!-- ROW1 -->
+                        <Label Text="Originals"
+                               Margin="16,0,0,0"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               TextColor="LightGray" />
+                        <CollectionView HeightRequest="180"
+                                        HorizontalScrollBarVisibility="Never"
+                                        ItemsSource="{StaticResource Films}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <ContentView>
+                                        <pancakeView:PancakeView
+                                            Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
+                                            CornerRadius="7">
+                                            <Image Source="{Binding .}" />
+                                        </pancakeView:PancakeView>
+                                    </ContentView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- ROW1 -->
+
+                        <!-- ROW1 -->
+                        <Label Text="Originals"
+                               Margin="16,0,0,0"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               TextColor="LightGray" />
+                        <CollectionView HeightRequest="180"
+                                        HorizontalScrollBarVisibility="Never"
+                                        ItemsSource="{StaticResource Films}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <ContentView>
+                                        <pancakeView:PancakeView
+                                            Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
+                                            CornerRadius="7">
+                                            <Image Source="{Binding .}" />
+                                        </pancakeView:PancakeView>
+                                    </ContentView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- ROW1 -->
+
+                        <!-- ROW1 -->
+                        <Label Text="Originals"
+                               Margin="16,0,0,0"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               TextColor="LightGray" />
+                        <CollectionView HeightRequest="180"
+                                        HorizontalScrollBarVisibility="Never"
+                                        ItemsSource="{StaticResource Films}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <ContentView>
+                                        <pancakeView:PancakeView
+                                            Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
+                                            CornerRadius="7">
+                                            <Image Source="{Binding .}" />
+                                        </pancakeView:PancakeView>
+                                    </ContentView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- ROW1 -->
+                    </StackLayout>
+
+
                 </StackLayout>
 
             </ScrollView>
+            <!-- NAVBAR -->
+            
+            <!-- NAVBAR BACK -->
+            <BoxView iOsSpecific:VisualElement.BlurEffect="Dark"
+                     HeightRequest="90"
+                     Opacity="0" 
+                     VerticalOptions="Start"
+                     />
+            <!-- NAVBAR BACK -->
+            
+            <Grid HeightRequest="90"
+                  VerticalOptions="Start">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Text="back"
+                        VerticalOptions="End"
+                        HorizontalOptions="Start"
+                        Command="{Binding BackCommand}" />
+                <Image Grid.Column="1"
+                       x:DataType="Image"
+                       BindingContext="{x:Reference Logo}"
+                       Opacity="{Binding Opacity, Converter={StaticResource InvertOpacityConverter}}"
+                       Source="ngLogo"
+                       HeightRequest="50"
+                       VerticalOptions="End" />
+                <!-- <Image Grid.Column="2" Source="cast" -->
+                <!--        VerticalOptions="End" /> -->
+            </Grid>
+            <!-- NAVBAR -->
 
         </Grid>
 
