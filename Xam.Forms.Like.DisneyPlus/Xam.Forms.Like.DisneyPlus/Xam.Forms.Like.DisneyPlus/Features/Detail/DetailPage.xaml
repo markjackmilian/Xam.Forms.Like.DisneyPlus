@@ -17,7 +17,8 @@
         <ResourceDictionary>
             <converters:CollectionViewMarginConverter x:Key="CollectionViewMarginConverter" />
             <converters:InvertOpacityConverter x:Key="InvertOpacityConverter" />
-            
+            <converters:SmallLogoTranslationConverter x:Key="SmallLogoTranslationConverter" />
+
             <x:Array Type="{x:Type system:String}" x:Key="Films">
                 <x:String>simpson.jpg</x:String>
                 <x:String>gravity.jpg</x:String>
@@ -56,7 +57,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="End"
                        Margin="0,0,0,170" />
-               
+
             </Grid>
 
             <ScrollView Scrolled="ScrollView_OnScrolled"
@@ -214,15 +215,6 @@
 
             </ScrollView>
             <!-- NAVBAR -->
-            
-            <!-- NAVBAR BACK -->
-            <BoxView iOsSpecific:VisualElement.BlurEffect="Dark"
-                     HeightRequest="90"
-                     Opacity="0" 
-                     VerticalOptions="Start"
-                     />
-            <!-- NAVBAR BACK -->
-            
             <Grid HeightRequest="90"
                   VerticalOptions="Start">
                 <Grid.ColumnDefinitions>
@@ -230,6 +222,15 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
+                <BoxView
+                    BackgroundColor="{StaticResource DarkBackColor}"
+                    x:Name="NavBack"
+                    HeightRequest="90"
+                    x:DataType="Image"
+                    BindingContext="{x:Reference Logo}"
+                    Opacity="{Binding Opacity, Converter={StaticResource InvertOpacityConverter}}"
+                    VerticalOptions="Start"
+                    Grid.ColumnSpan="3" />
                 <Button Grid.Column="0"
                         Text="back"
                         VerticalOptions="End"
@@ -238,8 +239,9 @@
                 <Image Grid.Column="1"
                        x:DataType="Image"
                        BindingContext="{x:Reference Logo}"
-                       Opacity="{Binding Opacity, Converter={StaticResource InvertOpacityConverter}}"
                        Source="ngLogo"
+                       Opacity="{Binding Opacity, Converter={StaticResource InvertOpacityConverter}}"
+                       TranslationY="{Binding Opacity, Converter={StaticResource SmallLogoTranslationConverter}}"
                        HeightRequest="50"
                        VerticalOptions="End" />
                 <!-- <Image Grid.Column="2" Source="cast" -->
