@@ -8,9 +8,8 @@
              xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:converters="clr-namespace:Xam.Forms.Like.DisneyPlus.Converters;assembly=Xam.Forms.Like.DisneyPlus"
-             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:DataType="detail:DetailViewModel"
-             BackgroundColor="#1B1D29"
+             BackgroundColor="{StaticResource DarkBackColor}"
              BindingContext="{markupExtensions:ViewModelMarkup ViewModel={x:Type detail:DetailViewModel}}"
              x:Class="Xam.Forms.Like.DisneyPlus.Features.Detail.DetailPage">
     <ContentPage.Resources>
@@ -18,6 +17,9 @@
             <converters:CollectionViewMarginConverter x:Key="CollectionViewMarginConverter" />
             <converters:InvertOpacityConverter x:Key="InvertOpacityConverter" />
             <converters:SmallLogoTranslationConverter x:Key="SmallLogoTranslationConverter" />
+            <converters:NavBarOpacityConverter x:Key="NavBarOpacityConverter" />
+
+            <system:Double x:Key="NavigationLevel">0.5</system:Double>
 
             <x:Array Type="{x:Type system:String}" x:Key="Films">
                 <x:String>simpson.jpg</x:String>
@@ -25,6 +27,7 @@
                 <x:String>gravity2.jpg</x:String>
                 <x:String>avanger.jpg</x:String>
             </x:Array>
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -36,6 +39,8 @@
                     <RowDefinition Height="2*" />
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
+
+
                 <Image Grid.Row="0"
                        Source="ocean2"
                        Aspect="AspectFill"
@@ -51,6 +56,12 @@
                         </magicGradients:LinearGradient>
                     </magicGradients:GradientView.GradientSource>
                 </magicGradients:GradientView>
+                <ContentView Grid.Row="0"
+                             Grid.RowSpan="2"
+                             x:Name="Background"
+                             Opacity="0"
+                             BackgroundColor="{StaticResource DarkBackColor}" />
+
                 <Image Grid.Row="0" Source="ngLogo"
                        x:Name="Logo"
                        WidthRequest="230"
@@ -63,7 +74,10 @@
             <ScrollView Scrolled="ScrollView_OnScrolled"
                         x:Name="Scroller"
                         VerticalScrollBarVisibility="Never">
+
+
                 <StackLayout Spacing="0">
+
                     <ContentView
                         x:Name="Spacer"
                         x:DataType="Image"
@@ -226,16 +240,40 @@
                     BackgroundColor="{StaticResource DarkBackColor}"
                     x:Name="NavBack"
                     HeightRequest="90"
-                    x:DataType="Image"
-                    BindingContext="{x:Reference Logo}"
-                    Opacity="{Binding Opacity, Converter={StaticResource InvertOpacityConverter}}"
+                    x:DataType="ContentView"
+                    BindingContext="{x:Reference Background}"
+                    Opacity="{Binding Opacity, Converter={StaticResource NavBarOpacityConverter}}"
                     VerticalOptions="Start"
                     Grid.ColumnSpan="3" />
-                <Button Grid.Column="0"
-                        Text="back"
-                        VerticalOptions="End"
-                        HorizontalOptions="Start"
-                        Command="{Binding BackCommand}" />
+
+                <Grid
+                    Grid.Column="0"
+                    VerticalOptions="End"
+                    HorizontalOptions="Start"
+                    Padding="2"
+                    Margin="8"
+                    >
+                    <pancakeView:PancakeView
+                        BackgroundColor="{StaticResource DarkBackColor}"
+                        CornerRadius="13"
+                        HeightRequest="26"
+                        WidthRequest="26"
+                        Opacity=".8"
+                        >
+                    </pancakeView:PancakeView>
+                    <Image
+                        Source="back"
+                        WidthRequest="16"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+
                 <Image Grid.Column="1"
                        x:DataType="Image"
                        BindingContext="{x:Reference Logo}"
@@ -244,8 +282,11 @@
                        TranslationY="{Binding Opacity, Converter={StaticResource SmallLogoTranslationConverter}}"
                        HeightRequest="50"
                        VerticalOptions="End" />
-                <!-- <Image Grid.Column="2" Source="cast" -->
-                <!--        VerticalOptions="End" /> -->
+                <Image Grid.Column="2" Source="cast"
+                       Margin="12"
+                       HeightRequest="22"
+                       HorizontalOptions="End"
+                       VerticalOptions="End" />
             </Grid>
             <!-- NAVBAR -->
 

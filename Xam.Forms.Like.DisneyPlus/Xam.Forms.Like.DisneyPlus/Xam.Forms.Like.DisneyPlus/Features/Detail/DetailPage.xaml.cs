@@ -44,13 +44,13 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Detail
                 this._startValue = (int) e.ScrollY;
                 return;
             }
-            //
-            // if (e.ScrollY < 0) return;
             
-            this.Spacer.Opacity = e.ScrollY / this.BackImage.Height;
-
 
             var realScroll = e.ScrollY -this._startValue;
+            
+            this.Background.Opacity = realScroll / (this.BackImage.Height/1.5);
+            
+            
             // animation for ngLogo flatterized in 50
             var bigLogoOpacity = 1-realScroll/50;
 
@@ -59,14 +59,15 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Detail
             
             this.Logo.TranslationY = e.ScrollY*-1;
 
-            this.ManageBlurOnIos(realScroll);
+            
+            this.ManageNavigationHeader(this.Background.Opacity);
         }
 
-        private void ManageBlurOnIos(double realScroll)
+        private void ManageNavigationHeader(double backGroundOpacity)
         {
             if (Device.RuntimePlatform == Device.Android) return;
 
-            if (realScroll > 200)
+            if (backGroundOpacity > 0.95)
             {
                 this.NavBack.BackgroundColor = Color.Transparent;
                 this.NavBack.On<iOS>().UseBlurEffect(BlurEffectStyle.Dark);

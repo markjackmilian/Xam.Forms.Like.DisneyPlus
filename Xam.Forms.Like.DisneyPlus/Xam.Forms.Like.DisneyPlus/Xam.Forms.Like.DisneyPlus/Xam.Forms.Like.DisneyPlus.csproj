@@ -46,6 +46,7 @@
       <SharedImage Include="Assets\Images\TabIcons\download.svg" BaseSize="30" />
       <SharedImage Include="Assets\Images\TabIcons\home.png" BaseSize="30" />
       <SharedImage Include="Assets\Images\TabIcons\search.png" BaseSize="30" />
+      <SharedImage Include="Assets\Images\back.png" BaseSize="30"/>
     </ItemGroup>
 
     <ItemGroup>
