@@ -5,6 +5,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using DryIoc;
+using Xam.Forms.Like.DisneyPlus.Android.Services;
+using Xam.Forms.Like.DisneyPlus.Services;
 
 namespace Xam.Forms.Like.DisneyPlus.Android
 {
@@ -20,6 +23,8 @@ namespace Xam.Forms.Like.DisneyPlus.Android
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+            
+            App.Container.Register<INotchService,DroidNotchService>(Reuse.Transient);
         }
     }
 }

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DryIoc;
 using Foundation;
 using UIKit;
+using Xam.Forms.Like.DisneyPlus.iOS.Services;
+using Xam.Forms.Like.DisneyPlus.Services;
 
 namespace Xam.Forms.Like.DisneyPlus.iOS
 {
@@ -23,6 +26,9 @@ namespace Xam.Forms.Like.DisneyPlus.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            
+            App.Container.Register<INotchService,IosNotchService>(Reuse.Transient);
+
             
             return base.FinishedLaunching(app, options);
         }

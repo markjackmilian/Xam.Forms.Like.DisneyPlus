@@ -9,7 +9,6 @@
              xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:converters="clr-namespace:Xam.Forms.Like.DisneyPlus.Converters;assembly=Xam.Forms.Like.DisneyPlus"
              x:DataType="detail:DetailViewModel"
-             BackgroundColor="{StaticResource DarkBackColor}"
              BindingContext="{markupExtensions:ViewModelMarkup ViewModel={x:Type detail:DetailViewModel}}"
              x:Class="Xam.Forms.Like.DisneyPlus.Features.Detail.DetailPage">
     <ContentPage.Resources>
@@ -18,8 +17,7 @@
             <converters:InvertOpacityConverter x:Key="InvertOpacityConverter" />
             <converters:SmallLogoTranslationConverter x:Key="SmallLogoTranslationConverter" />
             <converters:NavBarOpacityConverter x:Key="NavBarOpacityConverter" />
-
-            <system:Double x:Key="NavigationLevel">0.5</system:Double>
+            <converters:BoolToNavBarHeightConverter x:Key="BoolToNavBarHeightConverter" />
 
             <x:Array Type="{x:Type system:String}" x:Key="Films">
                 <x:String>simpson.jpg</x:String>
@@ -27,19 +25,16 @@
                 <x:String>gravity2.jpg</x:String>
                 <x:String>avanger.jpg</x:String>
             </x:Array>
-
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
-
-        <Grid>
-            <Grid>
+        <Grid BackgroundColor="{StaticResource DarkBackColor}">
+            <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
-
 
                 <Image Grid.Row="0"
                        Source="ocean2"
@@ -74,18 +69,13 @@
             <ScrollView Scrolled="ScrollView_OnScrolled"
                         x:Name="Scroller"
                         VerticalScrollBarVisibility="Never">
-
-
                 <StackLayout Spacing="0">
-
                     <ContentView
-                        x:Name="Spacer"
                         x:DataType="Image"
                         BackgroundColor="{StaticResource DarkBackColor}"
                         Opacity="0"
                         HeightRequest="{Binding Height}"
                         BindingContext="{x:Reference BackImage}" />
-
 
                     <StackLayout TranslationY="-165">
                         <!-- ROW1 -->
@@ -223,13 +213,11 @@
                         </CollectionView>
                         <!-- ROW1 -->
                     </StackLayout>
-
-
                 </StackLayout>
 
             </ScrollView>
             <!-- NAVBAR -->
-            <Grid HeightRequest="90"
+            <Grid HeightRequest="{Binding HasNotch, Converter={StaticResource BoolToNavBarHeightConverter}}"
                   VerticalOptions="Start">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -251,24 +239,20 @@
                     VerticalOptions="End"
                     HorizontalOptions="Start"
                     Padding="2"
-                    Margin="8"
-                    >
+                    Margin="8">
                     <pancakeView:PancakeView
                         BackgroundColor="{StaticResource DarkBackColor}"
                         CornerRadius="13"
                         HeightRequest="26"
                         WidthRequest="26"
-                        Opacity=".8"
-                        >
-                    </pancakeView:PancakeView>
+                        Opacity=".8" />
                     <Image
                         Source="back"
                         WidthRequest="16"
                         HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        >
+                        VerticalOptions="Center">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                            <TapGestureRecognizer Command="{Binding BackCommand}" />
                         </Image.GestureRecognizers>
                     </Image>
                 </Grid>
