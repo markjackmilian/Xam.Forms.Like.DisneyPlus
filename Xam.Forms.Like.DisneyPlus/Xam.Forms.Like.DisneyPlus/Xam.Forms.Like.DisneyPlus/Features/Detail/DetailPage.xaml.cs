@@ -1,16 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Application = Xamarin.Forms.Application;
-using DeviceInfo = Xamarin.Essentials.DeviceInfo;
 
 namespace Xam.Forms.Like.DisneyPlus.Features.Detail
 {
@@ -25,14 +18,6 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Detail
         public DetailPage()
         {
             InitializeComponent();
-
-            this.AdjustCustomTitleViewHeight();
-        }
-
-        private void AdjustCustomTitleViewHeight()
-        {
-            if (DeviceInfo.Platform != DevicePlatform.iOS) return;
-            
         }
 
         protected override void OnAppearing()
