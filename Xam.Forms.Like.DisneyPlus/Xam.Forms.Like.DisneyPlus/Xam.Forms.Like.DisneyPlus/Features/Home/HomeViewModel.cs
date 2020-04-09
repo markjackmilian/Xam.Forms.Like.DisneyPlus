@@ -1,17 +1,25 @@
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using PropertyChanged;
+using Xam.Forms.Like.DisneyPlus.Classes;
 using Xam.Forms.Like.DisneyPlus.Features.Detail;
 using Xam.Zero.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace Xam.Forms.Like.DisneyPlus.Features.Home
 {
     public class HomeViewModel : ZeroBaseModel
     {
         public ICommand GoToDetailCommand { get; set; }
-        public List<HeaderItem> HeaderItems { get; set; }
+        public CircularObservableCollection<HeaderItem> HeaderItems { get; set; }
         public HeaderItem CurrentHeaderItem { get; set; }
+
+        public bool PageIsReady { get; set; }
 
 
         public HomeViewModel()
@@ -19,35 +27,60 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
             this.GoToDetailCommand = new Command(async ()=> await base.Push<DetailPage>());
         }
 
+        /// <summary>
+        /// Called automagically from PropertyChanged.Refit
+        /// </summary>
         public void OnCurrentHeaderItemChanged()
         {
-            this.HeaderItems.ForEach(f => f.Scale = 0.8);
+            this.HeaderItems.SetCurrentIndex(this.CurrentCenterIndex);
+            this.HeaderItems.ForEach(f => f.Scale = 0.95);
             this.CurrentHeaderItem.Scale = 1;
         }
-        
-      
 
         protected override void PrepareModel(object data)
         {
             base.PrepareModel(data);
             
-            this.HeaderItems = new List<HeaderItem>
+            this.HeaderItems = new CircularObservableCollection<HeaderItem>(new List<HeaderItem>
             {
                 new HeaderItem
                 {
-                    Source = "mandalorian.jpg"
+                    Source = "mandalorian.png"
                 },
                 new HeaderItem
                 {
-                    Source = "mandalorian.jpg"
+                    Source = "simpson.jpg"
                 }, new HeaderItem
                 {
-                    Source = "mandalorian.jpg"
+                    Source = "mandalorian.png"
                 },
-            };
-            
+                new HeaderItem
+                {
+                    Source = "avanger.jpg"
+                },
+                new HeaderItem
+                {
+                    Source = "gravity.jpg"
+                },
+            }.ToArray()); 
         }
 
+        private CarouselView Carousel => ((HomePage) this.CurrentPage).CarouselView;
+        private int CurrentCenterIndex => this.HeaderItems.IndexOf(this.CurrentHeaderItem);
+
+        protected override async void CurrentPageOnAppearing(object sender, EventArgs e)
+        {
+            await Task.Delay(50);
+            await MainThread.InvokeOnMainThreadAsync(() => { this.Carousel.Position = 2; });
+            this.PageIsReady = true;
+            
+            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            {
+                var nextPosition = ++this.Carousel.Position;
+                this.Carousel.ScrollTo(this.HeaderItems[nextPosition]);
+                return true;
+            } );
+        }
     }
 
     [AddINotifyPropertyChangedInterface]
@@ -55,7 +88,7 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
     {
         public HeaderItem()
         {
-            this.Scale = 0.98;
+            this.Scale = 0.95;
         }
         
         public string Source { get; set; }

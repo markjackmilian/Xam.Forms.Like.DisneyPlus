@@ -16,8 +16,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:CollectionViewMarginConverter x:Key="CollectionViewMarginConverter"/>   
-            
+            <converters:CollectionViewMarginConverter x:Key="CollectionViewMarginConverter" />
             <x:Array Type="{x:Type system:String}" x:Key="Films">
                 <x:String>simpson.jpg</x:String>
                 <x:String>gravity.jpg</x:String>
@@ -26,7 +25,7 @@
             </x:Array>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
         <Grid>
             <magicGradients:GradientView VerticalOptions="FillAndExpand">
@@ -53,121 +52,128 @@
                     </Grid>
                     <!-- NAV -->
 
-                    <!-- HEADER -->
-                    <ContentView HeightRequest="220">
+                    <StackLayout 
+                        IsVisible="{Binding PageIsReady}"
+                        >
+                        <!-- HEADER -->
                         <CarouselView
+                            x:Name="CarouselView"
+                            x:FieldModifier="public"
+                            HeightRequest="220"
                             CurrentItem="{Binding CurrentHeaderItem}"
                             ItemsSource="{Binding HeaderItems}"
+                            PeekAreaInsets="20"
                             HorizontalScrollBarVisibility="Never">
                             <CarouselView.ItemTemplate>
                                 <DataTemplate x:DataType="home:HeaderItem">
-                                    <ContentView Margin="0,-16">
+                                    <pancakeView:PancakeView>
                                         <Image Source="{Binding Source}"
                                                Scale="{Binding Scale}" />
-                                    </ContentView>
+                                    </pancakeView:PancakeView>
                                 </DataTemplate>
                             </CarouselView.ItemTemplate>
                         </CarouselView>
-                    </ContentView>
-                    <!-- HEADER -->
+                        <!-- HEADER -->
 
-                    <StackLayout
-                        HeightRequest="65"
-                        Margin="8,16"
-                        
-                        Orientation="Horizontal">
-                        <BindableLayout.ItemsSource>
-                            <x:Array Type="{x:Type system:String}" >
-                                <x:String>disney.png</x:String>
-                                <x:String>pixar.png</x:String>
-                                <x:String>marvel.png</x:String>
-                                <x:String>starwars.png</x:String>
-                                <x:String>starwars.png</x:String>
-                            </x:Array>
-                        </BindableLayout.ItemsSource>
-                        
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate x:DataType="system:String">
-                                <pancakeView:PancakeView
-                                    HorizontalOptions="CenterAndExpand"
-                                    HeightRequest="60"
-                                    WidthRequest="70"
-                                    CornerRadius="12"
-                                    BorderColor="#3E659C"
-                                    BorderThickness="1">
-                                    <pancakeView:PancakeView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToDetailCommand, Source={x:Reference Home} }" CommandParameter="{Binding .}"/>
-                                    </pancakeView:PancakeView.GestureRecognizers>
-                                    <Grid>
-                                        <magicGradients:GradientView VerticalOptions="FillAndExpand">
-                                            <magicGradients:GradientView.GradientSource>
-                                                <magicGradients:LinearGradient Angle="180">
-                                                    <magicGradients:GradientStop Color="#091639" Offset="1" />
-                                                    <magicGradients:GradientStop Color="#204B9A" Offset="0" />
-                                                </magicGradients:LinearGradient>
-                                            </magicGradients:GradientView.GradientSource>
-                                        </magicGradients:GradientView>
-                                        <Image Source="{Binding .}" Margin="4" />
-                                    </Grid>
-                                </pancakeView:PancakeView>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
+                        <StackLayout
+                            HeightRequest="65"
+                            Margin="16"
+                            Orientation="Horizontal">
+                            <BindableLayout.ItemsSource>
+                                <x:Array Type="{x:Type system:String}">
+                                    <x:String>disney.png</x:String>
+                                    <x:String>pixar.png</x:String>
+                                    <x:String>marvel.png</x:String>
+                                    <x:String>starwars.png</x:String>
+                                    <x:String>starwars.png</x:String>
+                                </x:Array>
+                            </BindableLayout.ItemsSource>
 
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <pancakeView:PancakeView
+                                        HorizontalOptions="CenterAndExpand"
+                                        HeightRequest="60"
+                                        WidthRequest="70"
+                                        CornerRadius="12"
+                                        BorderColor="#3E659C"
+                                        BorderThickness="1">
+                                        <pancakeView:PancakeView.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Path=BindingContext.GoToDetailCommand, Source={x:Reference Home} }"
+                                                CommandParameter="{Binding .}" />
+                                        </pancakeView:PancakeView.GestureRecognizers>
+                                        <Grid>
+                                            <magicGradients:GradientView VerticalOptions="FillAndExpand">
+                                                <magicGradients:GradientView.GradientSource>
+                                                    <magicGradients:LinearGradient Angle="180">
+                                                        <magicGradients:GradientStop Color="#091639" Offset="1" />
+                                                        <magicGradients:GradientStop Color="#204B9A" Offset="0" />
+                                                    </magicGradients:LinearGradient>
+                                                </magicGradients:GradientView.GradientSource>
+                                            </magicGradients:GradientView>
+                                            <Image Source="{Binding .}" Margin="4" />
+                                        </Grid>
+                                    </pancakeView:PancakeView>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+
+                        </StackLayout>
+
+                        <!-- ROW1 -->
+                        <Label Text="Originals"
+                               Margin="16,0,0,0"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               TextColor="LightGray" />
+                        <CollectionView HeightRequest="180"
+                                        HorizontalScrollBarVisibility="Never"
+                                        ItemsSource="{StaticResource Films}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <ContentView>
+                                        <pancakeView:PancakeView
+                                            Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
+                                            CornerRadius="7">
+                                            <Image Source="{Binding .}" />
+                                        </pancakeView:PancakeView>
+                                    </ContentView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- ROW1 -->
+
+                        <!-- ROW2 -->
+                        <Label Text="Because You Watched The Simpson"
+                               Margin="16,16,0,0"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               TextColor="LightGray" />
+                        <CollectionView HeightRequest="180"
+                                        HorizontalScrollBarVisibility="Never"
+                                        ItemsSource="{StaticResource Films}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <ContentView>
+                                        <pancakeView:PancakeView
+                                            Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
+                                            CornerRadius="7">
+                                            <Image Source="{Binding .}" />
+                                        </pancakeView:PancakeView>
+                                    </ContentView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- ROW2 -->
                     </StackLayout>
-
-                    <!-- ROW1 -->
-                    <Label Text="Originals"
-                           Margin="16,0,0,0"
-                           FontAttributes="Bold"
-                           FontSize="Medium"
-                           TextColor="LightGray" />
-                    <CollectionView HeightRequest="180"
-                                    HorizontalScrollBarVisibility="Never"
-                                    ItemsSource="{StaticResource Films}">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
-                        </CollectionView.ItemsLayout>
-
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="system:String">
-                                <ContentView>
-                                    <pancakeView:PancakeView
-                                        Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
-                                        CornerRadius="7">
-                                        <Image Source="{Binding .}" />
-                                    </pancakeView:PancakeView>
-                                </ContentView>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    <!-- ROW1 -->
-                    
-                    <!-- ROW2 -->
-                    <Label Text="Because You Watched The Simpson"
-                           Margin="16,16,0,0"
-                           FontAttributes="Bold"
-                           FontSize="Medium"
-                           TextColor="LightGray" />
-                    <CollectionView HeightRequest="180"
-                                    HorizontalScrollBarVisibility="Never"
-                                    ItemsSource="{StaticResource Films}">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
-                        </CollectionView.ItemsLayout>
-
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="system:String">
-                                <ContentView>
-                                    <pancakeView:PancakeView
-                                        Margin="{Binding ., ConverterParameter={StaticResource Films}, Converter={StaticResource CollectionViewMarginConverter}}"
-                                        CornerRadius="7">
-                                        <Image Source="{Binding .}" />
-                                    </pancakeView:PancakeView>
-                                </ContentView>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    <!-- ROW2 -->
 
 
                 </StackLayout>
