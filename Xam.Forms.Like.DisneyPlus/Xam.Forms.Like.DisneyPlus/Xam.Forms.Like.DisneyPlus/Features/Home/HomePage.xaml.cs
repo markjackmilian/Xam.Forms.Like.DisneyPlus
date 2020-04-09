@@ -12,7 +12,6 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
 {
     public partial class HomePage : ContentPage
     {
-        private int _actual = 1;
         public HomePage()
         {
             InitializeComponent();

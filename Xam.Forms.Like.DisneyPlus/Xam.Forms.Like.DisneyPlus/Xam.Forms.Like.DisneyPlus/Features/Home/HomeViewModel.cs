@@ -74,12 +74,12 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
             await MainThread.InvokeOnMainThreadAsync(() => { this.Carousel.Position = 2; });
             this.PageIsReady = true;
             
-            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
-            {
-                var nextPosition = ++this.Carousel.Position;
-                this.Carousel.ScrollTo(this.HeaderItems[nextPosition]);
-                return true;
-            } );
+            // Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            // {
+            //     var nextPosition = ++this.Carousel.Position;
+            //     this.Carousel.ScrollTo(this.HeaderItems[nextPosition]);
+            //     return true;
+            // } );
         }
     }
 
