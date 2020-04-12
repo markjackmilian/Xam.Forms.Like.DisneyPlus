@@ -18,7 +18,7 @@
         <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
         <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
         <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />
-        <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
+        <PackageReference Include="Xamarin.HotReload" Version="2.0.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -47,8 +47,11 @@
       <SharedImage Include="Assets\Images\TabIcons\home.png" BaseSize="30" />
       <SharedImage Include="Assets\Images\TabIcons\search.png" BaseSize="30" />
       <SharedImage Include="Assets\Images\back.png" BaseSize="30" />
-      <None Remove="Assets\Images\HeaderCarousel\mandalorian.png" />
-      <SharedImage Include="Assets\Images\HeaderCarousel\mandalorian.png" BaseSize="220" />
+      <SharedImage Include="Assets\Images\HeaderCarousel\destiny.jpg" BaseSize="210" />
+      <SharedImage Include="Assets\Images\HeaderCarousel\lion.jpg" BaseSize="210" />
+      <SharedImage Include="Assets\Images\HeaderCarousel\mandalorian.jpg" BaseSize="210" />
+      <SharedImage Include="Assets\Images\HeaderCarousel\panther.jpg" BaseSize="210" />
+      <SharedImage Include="Assets\Images\HeaderCarousel\dolphin.jpg" BaseSize="210" />
     </ItemGroup>
 
     <ItemGroup>

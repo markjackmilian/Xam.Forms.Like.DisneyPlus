@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using PropertyChanged;
@@ -35,6 +36,9 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
             this.HeaderItems.SetCurrentIndex(this.CurrentCenterIndex);
             this.HeaderItems.ForEach(f => f.Scale = 0.95);
             this.CurrentHeaderItem.Scale = 1;
+            
+            // this.HeaderItems = new CircularObservableCollection<HeaderItem>(this.HeaderItems.ToArray());
+            // base.RaisePropertyChanged(()=> this.HeaderItems);
         }
 
         protected override void PrepareModel(object data)
@@ -45,22 +49,22 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
             {
                 new HeaderItem
                 {
-                    Source = "mandalorian.png"
+                    Source = "destiny.jpg"
                 },
                 new HeaderItem
                 {
-                    Source = "simpson.jpg"
+                    Source = "lion.jpg"
                 }, new HeaderItem
                 {
-                    Source = "mandalorian.png"
+                    Source = "mandalorian.jpg"
                 },
                 new HeaderItem
                 {
-                    Source = "avanger.jpg"
+                    Source = "panther.jpg"
                 },
                 new HeaderItem
                 {
-                    Source = "gravity.jpg"
+                    Source = "dolphin.jpg"
                 },
             }.ToArray()); 
         }
