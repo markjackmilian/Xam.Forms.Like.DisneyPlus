@@ -11,6 +11,8 @@
                 <Setter Property="Shell.NavBarIsVisible" Value="False" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="White" />
                 <Setter Property="Shell.TabBarTitleColor" Value="White" />
+                <Setter Property="Shell.TabBarDisabledColor" Value="LightGray" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="LightGray" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource DarkBackColor}" />
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />

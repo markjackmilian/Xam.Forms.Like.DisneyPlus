@@ -33,12 +33,11 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
         /// </summary>
         public void OnCurrentHeaderItemChanged()
         {
-            this.HeaderItems.SetCurrentIndex(this.CurrentCenterIndex);
+            if(Device.RuntimePlatform == Device.iOS)
+                this.HeaderItems.SetCurrentIndex(this.CurrentCenterIndex);
+            
             this.HeaderItems.ForEach(f => f.Scale = 0.95);
             this.CurrentHeaderItem.Scale = 1;
-            
-            // this.HeaderItems = new CircularObservableCollection<HeaderItem>(this.HeaderItems.ToArray());
-            // base.RaisePropertyChanged(()=> this.HeaderItems);
         }
 
         protected override void PrepareModel(object data)
@@ -74,10 +73,13 @@ namespace Xam.Forms.Like.DisneyPlus.Features.Home
 
         protected override async void CurrentPageOnAppearing(object sender, EventArgs e)
         {
-            await Task.Delay(50);
-            await MainThread.InvokeOnMainThreadAsync(() => { this.Carousel.Position = 2; });
+            await Task.Delay(1000);
+            await MainThread.InvokeOnMainThreadAsync(() =>
+            {
+                this.Carousel.ScrollTo(2);//.Position = 2;
+            });
             this.PageIsReady = true;
-            
+
             // Device.StartTimer(TimeSpan.FromSeconds(5), () =>
             // {
             //     var nextPosition = ++this.Carousel.Position;

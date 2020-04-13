@@ -18,8 +18,9 @@ namespace Xam.Forms.Like.DisneyPlus.Classes
         {
             if (currentCenterIndex == this.Count - 1)
             {
-                this.Add(this[0]);
+                var element = this[0];
                 this.RemoveAt(0);
+                this.Add(this[0]);
             }
 
             if (currentCenterIndex == 1)
